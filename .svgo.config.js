@@ -3,7 +3,7 @@ export default {
   plugins: [
     {
       // Include and override the built-in plugins
-      name: 'preset-default',
+      name: "preset-default",
       params: {
         overrides: {
           removeViewBox: false,
@@ -17,13 +17,13 @@ export default {
     },
     {
       // Better for accessibility
-      name: 'removeUnknownsAndDefaults',
+      name: "removeUnknownsAndDefaults",
       params: {
         keepRoleAttr: true,
       },
     },
 
-    'prefixIds',
+    "prefixIds",
     // prevents conflicts with inline SVGs on the same page by prefixing with the name of the file
     // see: https://github.com/svg/svgo/issues/674
   ],

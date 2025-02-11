@@ -1,8 +1,8 @@
-# Qwik migrate version of skill-icons
+# Qwik migration
 
 ## Overview
 
-- This is a `Qwik` migrate version of the `skill-icons` project.
+- This is `qwik` version of [`skill-icons`](https://github.com/tandpfun/skill-icons).
 - The `endpoint` is the same as the original project, but with additional query params.
 
 ## API References

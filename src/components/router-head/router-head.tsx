@@ -1,5 +1,5 @@
-import { component$ } from '@builder.io/qwik';
-import { useDocumentHead, useLocation } from '@builder.io/qwik-city';
+import { component$ } from "@builder.io/qwik";
+import { useDocumentHead, useLocation } from "@builder.io/qwik-city";
 
 export const RouterHead = component$(() => {
   const head = useDocumentHead();
@@ -9,9 +9,9 @@ export const RouterHead = component$(() => {
     <>
       <title>{head.title}</title>
 
-      <link rel='canonical' href={loc.url.href} />
-      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+      <link rel="canonical" href={loc.url.href} />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
       {head.meta.map((m) => (
         <meta key={m.key} {...m} />
@@ -25,7 +25,9 @@ export const RouterHead = component$(() => {
         <style
           key={s.key}
           {...s.props}
-          {...(s.props?.dangerouslySetInnerHTML ? {} : { dangerouslySetInnerHTML: s.style })}
+          {...(s.props?.dangerouslySetInnerHTML
+            ? {}
+            : { dangerouslySetInnerHTML: s.style })}
         />
       ))}
 
@@ -33,7 +35,9 @@ export const RouterHead = component$(() => {
         <script
           key={s.key}
           {...s.props}
-          {...(s.props?.dangerouslySetInnerHTML ? {} : { dangerouslySetInnerHTML: s.script })}
+          {...(s.props?.dangerouslySetInnerHTML
+            ? {}
+            : { dangerouslySetInnerHTML: s.script })}
         />
       ))}
     </>
