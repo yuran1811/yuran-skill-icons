@@ -1,6 +1,7 @@
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import { qwikVite } from "@builder.io/qwik/optimizer";
 import { defineConfig } from "vite";
+import vercel from "vite-plugin-vercel";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 import pkg from "./package.json";
@@ -14,8 +15,7 @@ const { dependencies = {}, devDependencies = {} } = pkg as any as {
 errorOnDuplicatesPkgDeps(devDependencies, dependencies);
 
 export default defineConfig({
-  plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
-  optimizeDeps: { exclude: [] },
+  plugins: [qwikCity(), qwikVite(), vercel(), tsconfigPaths()],
   server: { headers: { "Cache-Control": "public, max-age=0" } },
   preview: { headers: { "Cache-Control": "public, max-age=600" } },
 });

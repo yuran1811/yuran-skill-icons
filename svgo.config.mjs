@@ -1,17 +1,14 @@
 export default {
-  multipass: true,
+  multipass: false,
+  datauri: "base64",
   plugins: [
     {
-      // Include and override the built-in plugins
       name: "preset-default",
       params: {
         overrides: {
           removeViewBox: false,
-          // prevent breaking scaling for SVGs that are scaled with HTML, CSS or JS
-          // see: https://github.com/svg/svgo/issues/1128
           removeTitle: false,
           removeDesc: false,
-          // not necessary for safety, but better for accessibility
         },
       },
     },
