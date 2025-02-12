@@ -15,7 +15,7 @@
 > | param          | data type | type       | value                             | description                                                    |
 > | :------------- | :-------- | ---------- | :-------------------------------- | -------------------------------------------------------------- |
 > | `i`            | `String`  | `required` | can be `all`, `js`, or `html,css` | name of icon(s) to be render,                                  |
-> | `t`, `theme`   | `String`  |            | `default: dark`                   | icon theme to be `light` or `dark`                             |
+> | `t`, `theme`   | `String`  |            | `default: dark`                   | icon theme to be `auto`, `light` or `dark`                     |
 > | `perline`      | `Int`     |            | `default: 15` `min: 1` `max: 50`  | num icons per line                                             |
 > | `gap`          | `Int`     |            | `default: 0` `min: 0` `max: 100`  | gap between icons                                              |
 > | `p`, `padding` | `Int`     |            | `default: 0` `min: 0` `max: 100`  | padding around wrapper                                         |
@@ -24,18 +24,18 @@
 
 ### Responses
 
-> | http code | content-type       | response                                                  |
-> | --------- | ------------------ | --------------------------------------------------------- |
+> | http code | content-type       | response                                                     |
+> | --------- | ------------------ | ------------------------------------------------------------ |
 > | `200`     | `image/svg+xml`    |
-> | `400`     | `application/json` | `{ msg: "You didn't specify any icons!" }`                |
-> | `400`     | `application/json` | `{ msg: '"theme" must be either "light" or "dark"' }`     |
-> | `400`     | `application/json` | `{ msg: '"perline" must be a number in range [1..50]' }`  |
-> | `400`     | `application/json` | `{ msg: '"gap" must be a number in range [0..100]' }`     |
-> | `400`     | `application/json` | `{ msg: '"padding" must be a number in range [0..100]' }` |
-> | `400`     | `application/json` | `{ msg: '"px" must be a number in range [0..100]' }`      |
-> | `400`     | `application/json` | `{ msg: '"py" must be a number in range [0..100]' }`      |
-> | `400`     | `application/json` | `{ msg: "You didn't format the icons param correctly!" }` |
-> | `500`     | `application/json` | `{ err: any }`                                            |
+> | `400`     | `application/json` | `{ msg: "You didn't specify any icons!" }`                   |
+> | `400`     | `application/json` | `{ msg: '"theme" must be either "auto, "light" or "dark"' }` |
+> | `400`     | `application/json` | `{ msg: '"perline" must be a number in range [1..50]' }`     |
+> | `400`     | `application/json` | `{ msg: '"gap" must be a number in range [0..100]' }`        |
+> | `400`     | `application/json` | `{ msg: '"padding" must be a number in range [0..100]' }`    |
+> | `400`     | `application/json` | `{ msg: '"px" must be a number in range [0..100]' }`         |
+> | `400`     | `application/json` | `{ msg: '"py" must be a number in range [0..100]' }`         |
+> | `400`     | `application/json` | `{ msg: "You didn't format the icons param correctly!" }`    |
+> | `500`     | `application/json` | `{ err: any }`                                               |
 
 ### Example request
 

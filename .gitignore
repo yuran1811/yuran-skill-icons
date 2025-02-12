@@ -42,8 +42,3 @@ lerna-debug.log*
 
 # Vercel
 .vercel
-
-# Test
-**/*test*
-
-.vercel
