@@ -9,13 +9,14 @@ export const parseShortNames = server$(
     theme = "dark",
   ) =>
     names.map((name) => {
-      if (iconNameList.includes(name))
-        return name + (themedIcons.includes(name) ? `-${theme}` : "");
-      if (name in shortNames)
-        return (
-          shortNames[name] +
-          (themedIcons.includes(shortNames[name]) ? `-${theme}` : "")
-        );
+      const suffix = themedIcons.includes(
+        name in shortNames ? shortNames[name] : name,
+      )
+        ? `-${theme}`
+        : "";
+
+      if (iconNameList.includes(name)) return name + suffix;
+      if (name in shortNames) return shortNames[name] + suffix;
     }),
 );
 
@@ -37,7 +38,10 @@ export const generateSvg = server$(
       paddingY: number;
     },
   ) => {
-    const iconSvgList = iconNames.map((i) => icons[i]);
+    const iconSvgList = iconNames.map((i) => ({
+      svg: icons[i],
+      name: i.replace(/-(light|dark|auto)/gi, ""),
+    }));
 
     const gapSize = 300 + gap;
     const totalPaddingY = (padding ? padding : paddingY) * 2;
@@ -51,13 +55,16 @@ export const generateSvg = server$(
     const scaledHeight = height * SCALE;
     const scaledWidth = length * SCALE;
 
-    return `
-    <svg width="${scaledWidth}" height="${scaledHeight}" viewBox="0 0 ${length} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+    return `<svg width="${scaledWidth}" height="${scaledHeight}" viewBox="0 0 ${length} ${height}" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
       ${iconSvgList
-        .map(
-          (i, index) =>
-            `<g transform="translate(${totalPaddingX / 2 + (index % perLine) * gapSize}, ${totalPaddingY / 2 + Math.floor(index / perLine) * gapSize})">${i}</g>`,
-        )
+        .map(({ svg }, index) => {
+          const pos = {
+            x: totalPaddingX / 2 + (index % perLine) * gapSize,
+            y: totalPaddingY / 2 + Math.floor(index / perLine) * gapSize,
+          };
+
+          return `<g transform="translate(${pos.x}, ${pos.y})">${svg}</g>`;
+        })
         .join(" ")}
     </svg>`;
   },

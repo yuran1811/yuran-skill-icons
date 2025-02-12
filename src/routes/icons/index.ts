@@ -12,11 +12,15 @@ const icons = glob["/public/icons/icons.json"] as Record<string, string>;
 const iconNameList = [
   ...new Set(Object.keys(icons).map((i) => i.split("-")[0])),
 ];
-
 const themedIcons = [
-  ...Object.keys(icons)
-    .filter((i) => i.includes("-light") || i.includes("-dark"))
-    .map((i) => i.split("-")[0]),
+  ...new Set(
+    Object.keys(icons)
+      .filter(
+        (i) =>
+          i.includes("-light") || i.includes("-dark") || i.includes("-auto"),
+      )
+      .map((i) => i.split("-")[0]),
+  ),
 ];
 
 export const onGet: RequestHandler = async ({ request, json, send }) => {
@@ -30,8 +34,8 @@ export const onGet: RequestHandler = async ({ request, json, send }) => {
     }
 
     const theme = searchParams.get("t") || searchParams.get("theme");
-    if (theme && theme !== "dark" && theme !== "light") {
-      json(400, { msg: '"theme" must be either "light" or "dark"' });
+    if (theme && theme !== "dark" && theme !== "light" && theme !== "auto") {
+      json(400, { msg: '"theme" must be either "auto", "light" or "dark"' });
       return;
     }
 
