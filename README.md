@@ -21,23 +21,20 @@
 ## Docs
 
 - [Specifying Icons](#specifying-icons)
-- [Qwik migration info](#qwik-migration)
+- [Centering Icons](#centering-icons)
+- [More custom](#more-custom)
 
 ### Specifying Icons
 
 Copy and paste the code block below into your readme to add the skills icon element!
 
-Change the `?i=js,html,css` to a list of your skills separated by ","s! You can find a full list of icons [here](https://skill-icons-livid.vercel.app/icons?i=all).
+Change the `?i=js,html,css` to a list of your skills separated by ","! You can find a full list of icons [here](https://skill-icons-livid.vercel.app/icons?i=all).
 
 ```md
-[![My Skills](https://skill-icons-livid.vercel.app/icons?i=js,html,css,socketio)](https://skillicons.dev)
+![My Skills](https://skill-icons-livid.vercel.app/icons?i=js,html,css,socketio)
 ```
 
-[![My Skills](https://skill-icons-livid.vercel.app/icons?i=js,html,css,socketio)](https://skillicons.dev)
-
-### Qwik migration
-
-- Read my [qwik migrate](./qwik-migrate.md) for more customization.
+![My Skills](https://skill-icons-livid.vercel.app/icons?i=js,html,css,socketio)
 
 ### Centering Icons
 
@@ -45,17 +42,21 @@ Want to center the icons in your readme? The SVGs are automatically resized, so 
 
 ```html
 <p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
+  <a href="https://skill-icons-livid.vercel.app">
+    <img src="https://skill-icons-livid.vercel.app/icons?i=git,kubernetes,docker,c,vim" />
   </a>
 </p>
 ```
 
 <p align="center">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
+  <a href="https://skill-icons-livid.vercel.app">
+    <img src="https://skill-icons-livid.vercel.app/icons?i=git,kubernetes,docker,c,vim" />
   </a>
 </p>
+
+### More custom
+
+- Read my [qwik migrate](./qwik-migrate.md) for more customization.
 
 ## Quick Start
 
@@ -105,4 +106,3 @@ Open [http://localhost:5173](http://localhost:5173) in your browser to view the 
 
 More in [qwik migration](./qwik-migrate.md)
 
-## 💖 Support the [origin project](https://github.com/tandpfun/skill-icons)
