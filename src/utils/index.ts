@@ -40,7 +40,7 @@ export const generateSvg = server$(
   ) => {
     const iconSvgList = iconNames.map((i) => ({
       svg: icons[i],
-      name: i.replace(/-(light|dark|auto)/gi, ""),
+      name: i.replace(/-(light|dark)/gi, ""),
     }));
 
     const gapSize = 300 + gap;

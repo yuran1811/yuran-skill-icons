@@ -3,7 +3,7 @@ import { type RequestHandler } from "@builder.io/qwik-city";
 import { ICONS_GAP, ICONS_PER_LINE } from "~/constants";
 import { generateSvg, parseShortNames } from "~/utils";
 
-const glob = import.meta.glob("/public/icons/icons.json", {
+const glob = import.meta.glob(["/public/icons/icons.json"], {
   import: "default",
   eager: true,
 });
@@ -15,10 +15,7 @@ const iconNameList = [
 const themedIcons = [
   ...new Set(
     Object.keys(icons)
-      .filter(
-        (i) =>
-          i.includes("-light") || i.includes("-dark") || i.includes("-auto"),
-      )
+      .filter((i) => /-(light|dark)/.test(i))
       .map((i) => i.split("-")[0]),
   ),
 ];
@@ -34,8 +31,8 @@ export const onGet: RequestHandler = async ({ request, json, send }) => {
     }
 
     const theme = searchParams.get("t") || searchParams.get("theme");
-    if (theme && theme !== "dark" && theme !== "light" && theme !== "auto") {
-      json(400, { msg: '"theme" must be either "auto", "light" or "dark"' });
+    if (theme && theme !== "dark" && theme !== "light") {
+      json(400, { msg: '"theme" must be either "light" or "dark"' });
       return;
     }
 
